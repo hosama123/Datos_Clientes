@@ -4,6 +4,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function GuardarCliente() {
   const [nombre, setNombre] = useState('');
+  const [clientes, setClientes] = useState([]);
+  const [apellido, setApellido] = useState(''); 
+
   const navigation = useNavigation();
   const route = useRoute();
   const agregarNuevo = route.params?.agregarNuevo;
@@ -14,7 +17,7 @@ export default function GuardarCliente() {
       return;
     }
 
-    const nuevoCliente = { nombre };
+    const nuevoCliente = { nombre , apellido,};
     agregarNuevo(nuevoCliente);
     navigation.goBack();
   };
@@ -23,7 +26,14 @@ export default function GuardarCliente() {
     <View style={styles.container}>
       <Text style={styles.label}>Nombre del Cliente</Text>
       <TextInput style={styles.input} value={nombre} onChangeText={setNombre} placeholder="Ej. Juan Pérez" />
+      <Text style={styles.label}>Nombre del Cliente</Text>
+      <TextInput style={styles.input} value={apellido} onChangeText={setApellido} placeholder="Ej. Juan Pérez" />
+      <Text style={styles.label}>Nombre del Cliente</Text>
+      <TextInput style={styles.input} value={cedula} onChangeText={setClientes} placeholder="Ej. Juan Pérez" />
+      
+      
       <Button title="Guardar Cliente" onPress={guardarNuevo} />
+        
     </View>
   );
 }
